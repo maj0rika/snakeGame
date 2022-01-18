@@ -25,11 +25,15 @@
         :addScores="addScores"
         :scores="scores"
         :snakeColor="snakeColor"
+        :hardMode="hardMode"
         @speedUpdate="speedUpdate"
       />
       <div class="버튼_박스">
         <button id="색_버튼" v-on:click="changeColor()">
           {{ this.snakeColor ? "눈뽕" : "초록뱀 " }}
+        </button>
+        <button id="색_버튼" v-on:click="changeMode()">
+          {{ this.hardMode ? "하드모드" : "일반모드 " }}
         </button>
       </div>
       <div>점수 : {{ scores }}</div>
@@ -58,6 +62,7 @@ export default {
       scores: 0,
       playing: false,
       snakeColor: false,
+      hardMode: false,
     };
   },
   methods: {
@@ -76,6 +81,9 @@ export default {
     },
     changeColor() {
       this.snakeColor = !this.snakeColor;
+    },
+    changeMode() {
+      this.hardMode = !this.hardMode;
     },
   },
 };

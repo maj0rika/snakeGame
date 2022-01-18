@@ -22,11 +22,13 @@ export default {
     gameStart: Function,
     addScores: Function,
     scores: Number,
-    snakeColor: Number,
+    snakeColor: Boolean,
+    hardMode: Boolean,
   },
   data() {
     return {
       speedUpdata: this.speed,
+      ColorToggle: false,
     };
   },
   computed: {
@@ -132,8 +134,24 @@ export default {
         this.pxSize,
         this.pxSize
       );
-      this.boardContext.fillStyle = this.Color();
+      if (this.hardMode) {
+        this.HardMode();
+      } else {
+        this.boardContext.fillStyle = this.Color();
+      }
+
       this.boardContext.fill(); //채우기
+    },
+    HardMode() {
+      //수정중!!
+      if (this.ColorToggle) {
+        this.boardContext.fillStyle = "#ff0000";
+      } else {
+        this.boardContext.fillStyle = "#ffFFFF";
+      }
+      console.log("this.ColorToggle", this.ColorToggle);
+      this.ColorToggle = !this.ColorToggle;
+      console.log("this.ColorToggle", this.ColorToggle);
     },
     Color() {
       if (this.snakeColor) {
