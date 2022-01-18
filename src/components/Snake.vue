@@ -90,7 +90,7 @@ export default {
             if(this.boardOut(forwardHeadPx) ||
             this.countPixelInSnake(this.snake[0]) > 1 ){
                 this.gameStart();
-                alert(`Game over! You've scored ${this.scores} points.`);
+                alert(`Game over! 당신의 점수는 ${this.scores}점 입니다.`);
             }
           
 
