@@ -117,7 +117,11 @@ export default {
         this.snake.pop(); //꼬리 지우기. 배열 맨뒤 삭제
         // console.log(" this.snake.pop()= ",this.snake.pop());
       }
-
+      if (this.hardMode) {
+        this.HardMode();
+      } else {
+        this.boardContext.fillStyle = this.Color();
+      }
       this.boardContext.beginPath(); //그리기시작
       // console.log(" beginPath= ",this.boardContext.beginPath());
       this.snake.forEach(this.drawPx); //각 요소 그리기
@@ -134,20 +138,15 @@ export default {
         this.pxSize,
         this.pxSize
       );
-      if (this.hardMode) {
-        this.HardMode();
-      } else {
-        this.boardContext.fillStyle = this.Color();
-      }
 
       this.boardContext.fill(); //채우기
     },
     HardMode() {
       //수정중!!
       if (this.ColorToggle) {
-        this.boardContext.fillStyle = "#ff0000";
+        this.boardContext.fillStyle = this.Color();
       } else {
-        this.boardContext.fillStyle = "#ffFFFF";
+        this.boardContext.fillStyle = "#ffffff";
       }
       console.log("this.ColorToggle", this.ColorToggle);
       this.ColorToggle = !this.ColorToggle;
